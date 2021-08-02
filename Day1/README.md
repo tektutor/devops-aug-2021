@@ -243,3 +243,35 @@ INSERT INTO Training VALUES ( 2, "Kubernetes", "5 Days" );
 INSERT INTO Training VALUES ( 3, "Game Programming using Qt & QML", "5 Days" );
 SELECT * FROM Training;
 ```
+
+The expected output is
+<pre>
+mysql> CREATE DATABASE tektutor;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> USE tektutor;
+Database changed
+mysql> CREATE TABLE Training (id int, name VARCHAR(25), duration VARCHAR(25));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> INSERT INTO Training VALUES(1, "DevOps", "5 Days");
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO Training VALUES(2, "Kubernetes", "5 Days");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO Training VALUES(3, "Artificial Intelligence", "5 Days");
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM Training;
++------+-------------------------+----------+
+| id   | name                    | duration |
++------+-------------------------+----------+
+|    1 | DevOps                  | 5 Days   |
+|    2 | Kubernetes              | 5 Days   |
+|    3 | Artificial Intelligence | 5 Days   |
++------+-------------------------+----------+
+3 rows in set (0.00 sec)
+
+mysql> 
+</pre>
