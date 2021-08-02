@@ -240,7 +240,7 @@ USE tektutor;
 CREATE TABLE Training (id int, name VARCHAR(25), duration VARCHAR(25));
 INSERT INTO Training VALUES ( 1, "DevOps", "5 Days" );
 INSERT INTO Training VALUES ( 2, "Kubernetes", "5 Days" );
-INSERT INTO Training VALUES ( 3, "Game Programming using Qt & QML", "5 Days" );
+INSERT INTO Training VALUES ( 3, "Artificial Intelligence", "5 Days" );
 SELECT * FROM Training;
 ```
 
