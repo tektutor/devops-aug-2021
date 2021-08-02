@@ -70,3 +70,27 @@ docker --version
 docker images
 ```
 
+### Listing images in the local Docker registry
+```
+docker images
+```
+
+### Downloading docker image from Docker Hub
+```
+docker pull hello-world:latest
+```
+
+### Creating a hello container 
+```
+docker run hello-world:latest
+```
+
+### Listing all the currently running containers
+```
+docker ps
+```
+
+### Listing all containers irrespective of their running states
+```
+docker ps -a
+```
