@@ -7,3 +7,4 @@ yum-config-manager \
     https://download.docker.com/linux/centos/docker-ce.repo
 yum install -y docker-ce --allowerasing
 ```
+When you are prompted for password type 'rps@12345'
