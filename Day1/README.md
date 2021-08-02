@@ -205,3 +205,10 @@ docker rm -f ubuntu3
 ```
 docker run -d --name mysql1 --hostname mysql1 -e MYSQL_ROOT_PASSWORD=root mysql:latest
 ```
+
+### Getting inside mysql1 container and connecting to mysql server
+```
+docker exec -it mysql1 sh
+mysql -u root -p
+```
+When prompted for password, type 'root' as the password.  This is the password you supplied while creating the container.
