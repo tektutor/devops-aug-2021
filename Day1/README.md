@@ -120,6 +120,7 @@ docker network ls
 docker network create my-network-1
 docker network create my-network-2 --subnet 192.168.0.0/16
 ```
+Containers that are in same networks can ping each other, while containers in different networks can't ping each other by default.
 
 ### Listing docker networks
 ```
@@ -130,4 +131,24 @@ docker network ls
 ```
 docker run -dit --name ubuntu3 --hostname ubuntu3 --network my-network-1 ubuntu:16.04 bash 
 docker run -dit --name ubuntu4 --hostname ubuntu4 --network my-network-2 ubuntu:16.04 bash 
+```
+In the above commands, ubuntu:16.04 is the image name
+--name is the container name
+--hostname is the hostname of the container
+
+### Getting inside a container that is running in background
+```
+docker exec -it ubuntu3 bash
+```
+
+### Coming out of a container shell 
+```
+docker exec -it ubuntu4 bash
+exit
+```
+
+### Finding the IP Address of a container
+```
+docker inspect ubuntu3 | grep IPA
+docker inspect ubuntu4 | grep IPA
 ```
