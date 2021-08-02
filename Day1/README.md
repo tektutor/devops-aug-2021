@@ -127,6 +127,11 @@ Containers that are in same networks can ping each other, while containers in di
 docker network ls
 ```
 
+### Inspecting network details
+```
+docker network inspect my-network-2
+```
+
 ### Creating a new container and adding it to our custom network
 ```
 docker run -dit --name ubuntu3 --hostname ubuntu3 --network my-network-1 ubuntu:16.04 bash 
@@ -151,4 +156,36 @@ exit
 ```
 docker inspect ubuntu3 | grep IPA
 docker inspect ubuntu4 | grep IPA
+```
+
+### Stopping a running container
+```
+docker stop ubuntu3
+```
+
+### Start an exited container
+```
+docker start ubuntu3
+```
+
+### Restart an existing container
+```
+docker restart ubuntu3
+```
+
+### Delete a container that is stopped already
+```
+docker rm ubuntu3
+```
+
+### Delete a running container graciously
+```
+docker stop ubuntu3
+docker rm ubuntu3
+docker stop ubuntu4 && docker rm ubuntu3
+```
+
+### Forcibly delete a running container
+```
+docker rm -f ubuntu3
 ```
