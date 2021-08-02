@@ -262,7 +262,13 @@ Query OK, 1 row affected (0.00 sec)
 
 mysql> INSERT INTO Training VALUES(3, "Artificial Intelligence", "5 Days");
 Query OK, 1 row affected (0.00 sec)
-
+CREATE DATABASE tektutor;
+USE tektutor;
+CREATE TABLE Training (id int, name VARCHAR(25), duration VARCHAR(25));
+INSERT INTO Training VALUES ( 1, "DevOps", "5 Days" );
+INSERT INTO Training VALUES ( 2, "Kubernetes", "5 Days" );
+INSERT INTO Training VALUES ( 3, "Artificial Intelligence", "5 Days" );
+SELECT * FROM Training;
 mysql> SELECT * FROM Training;
 +------+-------------------------+----------+
 | id   | name                    | duration |
@@ -275,3 +281,46 @@ mysql> SELECT * FROM Training;
 
 mysql> 
 </pre>
+
+### Stopping and restarting mysql1 container will not lead to loss of data
+```
+mysql> exit
+exit
+docker stop mysql1
+docker start mysql1
+docker exec -it mysql1 sh
+mysql -u root -p
+mysql> SHOW DATABASES;
+mysql> USE tektutor;CREATE DATABASE tektutor;
+USE tektutor;
+CREATE TABLE Training (id int, name VARCHAR(25), duration VARCHAR(25));
+INSERT INTO Training VALUES ( 1, "DevOps", "5 Days" );
+INSERT INTO Training VALUES ( 2, "Kubernetes", "5 Days" );
+INSERT INTO Training VALUES ( 3, "Artificial Intelligence", "5 Days" );
+SELECT * FROM Training;
+mysql> SHOW TABLES;
+mysql> SELECT * FROM Training;
+mysql> exit
+exit
+```
+As you observe, you will not loose records stored in container storge by restarting container.
+
+### Deleting container also deletes any data stored in container storage
+```
+docker rm -f mysql1
+```
+
+### Storing mysql1 database and its records into an extral volume
+```
+mkdir -p /tmp/mysql
+docker run -d --name mysql1 --hostname mysql1 -v /tmp/mysql:/var/lib/mysql mysql:latest
+docker exec -it mysql1 sh
+mysql -u root -p
+CREATE DATABASE tektutor;
+USE tektutor;
+CREATE TABLE Training (id int, name VARCHAR(25), duration VARCHAR(25));
+INSERT INTO Training VALUES ( 1, "DevOps", "5 Days" );
+INSERT INTO Training VALUES ( 2, "Kubernetes", "5 Days" );
+INSERT INTO Training VALUES ( 3, "Artificial Intelligence", "5 Days" );
+SELECT * FROM Training;
+```
