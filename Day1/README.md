@@ -201,3 +201,7 @@ docker stop ubuntu4 && docker rm ubuntu3
 docker rm -f ubuntu3
 ```
 
+### Creating a mysql container
+```
+docker run -d --name mysql1 --hostname mysql1 -e MYSQL_ROOT_PASSWORD=root mysql:latest
+```
