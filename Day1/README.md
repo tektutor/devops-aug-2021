@@ -128,6 +128,6 @@ docker network ls
 
 ### Creating a new container and adding it to our custom network
 ```
-docker run --dit --name ubuntu3 --hostname ubuntu3 --network my-network-1 ubuntu:16.04 bash 
-docker run --dit --name ubuntu4 --hostname ubuntu4 --network my-network-2 ubuntu:16.04 bash 
+docker run -dit --name ubuntu3 --hostname ubuntu3 --network my-network-1 ubuntu:16.04 bash 
+docker run -dit --name ubuntu4 --hostname ubuntu4 --network my-network-2 ubuntu:16.04 bash 
 ```
