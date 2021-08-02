@@ -80,6 +80,17 @@ docker images
 docker pull hello-world:latest
 ```
 
+### Finding Image layers
+```
+docker image inspect ubuntu:16.04
+```
+
+### Deleting an image
+```
+docker rmi ubuntu:16.04
+```
+You need to delete the containers that were created using above image first prior to deleting the containers.
+
 ### Creating a hello container 
 ```
 docker run hello-world:latest
@@ -189,3 +200,4 @@ docker stop ubuntu4 && docker rm ubuntu3
 ```
 docker rm -f ubuntu3
 ```
+
