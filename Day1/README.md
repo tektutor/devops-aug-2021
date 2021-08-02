@@ -94,3 +94,18 @@ docker ps
 ```
 docker ps -a
 ```
+### Creating a container in interactive/foreground mode
+```
+docker run -it --name ubuntu1 --hostname ubuntu1 ubuntu:16.04 /bin/bash
+```
+
+### Creating container in background/daemon mode
+```
+docker run -dit --name ubuntu2 --hostname ubuntu2 ubuntu:16.04 /bin/bash
+```
+
+
+### Listing the containers running
+```
+docker ps
+```
