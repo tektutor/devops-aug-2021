@@ -303,14 +303,14 @@ mysql> SELECT * FROM Training;
 mysql> exit
 exit
 ```
-As you observe, you will not loose records stored in container storge by restarting container.
+As you can observe, you will not loose records stored in container storge by restarting container.
 
 ### Deleting container also deletes any data stored in container storage
 ```
 docker rm -f mysql1
 ```
 
-### Storing mysql1 database and its records into an extral volume
+### Storing mysql1 database and its records into an external volume
 ```
 mkdir -p /tmp/mysql
 docker run -d --name mysql1 --hostname mysql1 -v /tmp/mysql:/var/lib/mysql mysql:latest
@@ -323,4 +323,13 @@ INSERT INTO Training VALUES ( 1, "DevOps", "5 Days" );
 INSERT INTO Training VALUES ( 2, "Kubernetes", "5 Days" );
 INSERT INTO Training VALUES ( 3, "Artificial Intelligence", "5 Days" );
 SELECT * FROM Training;
+exit
+exit
+docker rm -f mysql1
+docker run -d --name mysql1 --hostname mysql1 -v /tmp/mysql:/var/lib/mysql mysql:latest
+docker exec -it mysql1 sh
+mysql -u root -p
+USE tektutor;
+SELECT * FROM Training;
 ```
+As you can observe, though mysql1 container was deleted we are able to access the records created in old container from the new mysql1 container.  This is possible as we are using Volume Mounting /tmp/mysql.
