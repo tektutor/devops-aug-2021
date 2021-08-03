@@ -52,6 +52,8 @@ Ansible
 	- Developed by Ansible Inc organization
 		- Founded by Michael Deehan
 		- Michael Deehan is a former RedHat employee
+	- Agentless less
+        - Follows PUSH based architecture
 	- Ansible Core is Open source
     	- Install softwares
 	- Configure softwares
