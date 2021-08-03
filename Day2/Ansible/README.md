@@ -110,3 +110,24 @@ exit
 sudo su devops
 docker build -t tektutor/ansible-ubuntu .
 ```
+
+### Check if you can see the newly build image
+```
+docker images
+```
+
+### Remove any existing containers
+```
+docker rm -f $(docker ps -aq)
+```
+
+### Create couple of ubuntu containers using our custom ubuntu image
+```
+docker run -d --name ubuntu1 --hostname ubuntu1 -p 2001:22 -p 8001:80 tektutor/ansible-ubuntu:latest 
+docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/ansible-ubuntu:latest 
+```
+
+### See if the ubuntu1 and ubuntu2 containers are running
+```
+docker ps
+```
