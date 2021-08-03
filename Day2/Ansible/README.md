@@ -72,3 +72,14 @@ yum install -y ansible
 ```
 ansible --version
 ```
+
+### Install git
+```
+su -
+yum install -y git
+```
+
+### Cloning source code (Do this as Devops_userxx)
+```
+git clone https://github.com/tektuotr/devops-aug-2021.git
+```
