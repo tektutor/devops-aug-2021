@@ -81,5 +81,6 @@ yum install -y git
 
 ### Cloning source code (Do this as Devops_userxx)
 ```
-git clone https://github.com/tektuotr/devops-aug-2021.git
+git clone https://github.com/tektutor/devops-aug-2021.git
+cd devops-aug-2021/Day2/Ansible
 ```
