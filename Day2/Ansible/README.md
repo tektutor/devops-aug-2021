@@ -10,15 +10,15 @@ Vagrant
 
 Progamming Languages are of two major types
 	1. Imperative
-		- What ?
-			- you need to write code to automate
-		- How ?
-			- you need to write logic as code to perform the configuration management
+	What ?
+	- you need to write code to automate
+	How ?
+	- you need to write logic as code to perform the configuration management
 	2. Declarative
-		- What ?
-			- You need to mention in the Ansible declarative style
-		- How ?
-			- is taken care by Ansible
+	What ?
+		- You need to mention in the Ansible declarative style
+	How ?
+		- is taken care by Ansible
 
 YAML
  - Yet Another Markup Language
@@ -48,7 +48,7 @@ Ansible
 		- underhood it uses Ansible Core open source configuration mangement tool
   
 ### Ansible
-    - Configuration Mangement Tool
+- Configuration Mangement Tool
 	- Developed by Ansible Inc organization
 		- Founded by Michael Deehan
 		- Michael Deehan is a former RedHat employee
