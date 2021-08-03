@@ -1,0 +1,17 @@
+Kubernetes
+	- Different types of objects
+		Deployment
+			- Represents your application
+			- Manages ReplicaSets
+			- Rolling update
+		
+		ReplicaSet
+			- is K8s object that manages the number of Pods(your application instance)
+			- monitors the health of your application Pod, when it detects faulty non-responsive
+		          pods, it will replace them with new healthy pods
+			- Scale up/down is  supported by this object
+
+		Pod	
+			- is a collection of related containers
+			- one Pod represents on application
+			
