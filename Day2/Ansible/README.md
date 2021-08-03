@@ -196,3 +196,15 @@ ansible -i inventory all -m ping
 ```
 You need to replace 'jegan' with 'devops' in the inventory file 
 
+### What happens internally when you run ansible ping
+```
+ansible -i inventory ubuntu1 -m ping > out.yml 2>&1
+```
+1. Ansible picks the connection details of ubuntu1 ansible node and makes a SSH connection to ubuntu1 ansible node.
+2. Ansible creates a tmp folder in ACM(Ansible Controller Machine) and another tmp folder in ubuntu1 ansible node.
+3. Ansible copies the ping.py from ACM tmp folder to ubuntu1 tmp folder.
+4. Ansible then gives execute permission to ping.py in the ubuntu1 ansible node.
+5. Executes the ping.py using python interpreter on the ubuntu1 ansible node.
+6. Collects the output of ping.py execution.
+7. Deletes the tmp folder in the ubuntu1 ansible node.
+8. Prints a summary of the outcome in the Ansible Controller Machine.
