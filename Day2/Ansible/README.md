@@ -59,7 +59,7 @@ Ansible
 	- Configure softwares
 	- Manage users/permission/network policies
 	- typically most of the admin related day-today-work
-	- helps in automating configuration management using Declarative Languages
+	- helps in automating configpinguration management using Declarative Languages
 
 ### Installing Ansible
 ```
@@ -185,3 +185,26 @@ applicable law.
 
 root@ubuntu2:~#    
 </pre>
+
+### Running ansible adhoc ping command
+```
+cd devops-aug-2021
+git stash
+git pull
+cd devops-aug-2021/Day2/Ansible
+ansible -i inventory all -m ping
+```
+You need to replace 'jegan' with 'devops' in the inventory file 
+
+### What happens internally when you run ansible ping
+```
+ansible -i inventory ubuntu1 -m ping > out.yml 2>&1
+```
+1. Ansible picks the connection details of ubuntu1 ansible node from inventory file and makes a SSH connection to ubuntu1 ansible node.
+2. Ansible creates a tmp folder in ACM(Ansible Controller Machine) and another tmp folder in ubuntu1 ansible node.
+3. Ansible copies the ping.py from ACM tmp folder to ubuntu1 tmp folder.
+4. Ansible then gives execute permission to ping.py in the ubuntu1 ansible node.
+5. Executes the ping.py using python interpreter on the ubuntu1 ansible node.
+6. Collects the output of ping.py execution.
+7. Deletes the tmp folder in the ubuntu1 ansible node.
+8. Prints a summary of the outcome in the Ansible Controller Machine.
