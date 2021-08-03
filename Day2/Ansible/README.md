@@ -84,3 +84,9 @@ yum install -y git
 git clone https://github.com/tektutor/devops-aug-2021.git
 cd devops-aug-2021/Day2/Ansible
 ```
+
+### Creating ssh key pairs (Do this as Devops_userxx)
+```
+ssh-keygen
+```
+Accept all defaults by hitting Enter key 3 times.
