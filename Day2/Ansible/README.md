@@ -141,3 +141,47 @@ When it prompts a question, type yes
 ```
 Are you sure, you want to continue connecting (yes/no): 
 ```
+The expected output is
+<pre>
+[jegan@tektutor ~]$ ssh -p 2001 root@localhost
+The authenticity of host '[localhost]:2001 ([::1]:2001)' can't be established.
+ECDSA key fingerprint is SHA256:rb0tLy8dB12o5T0aiKjE+pL8Ixc6Zfrkp9UBuHDz2Bk.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2001' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 4.18.0-240.el8.x86_64 x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu1:~# exit
+</pre>
+
+<pre>
+jegan@tektutor ~]$ ssh -p 2002 root@localhost
+The authenticity of host '[localhost]:2002 ([::1]:2002)' can't be established.
+ECDSA key fingerprint is SHA256:rb0tLy8dB12o5T0aiKjE+pL8Ixc6Zfrkp9UBuHDz2Bk.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '[localhost]:2002' (ECDSA) to the list of known hosts.
+Welcome to Ubuntu 16.04.7 LTS (GNU/Linux 4.18.0-240.el8.x86_64 x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+root@ubuntu2:~#    
+</pre>
