@@ -131,3 +131,13 @@ docker run -d --name ubuntu2 --hostname ubuntu2 -p 2002:22 -p 8002:80 tektutor/a
 ```
 docker ps
 ```
+
+### Test if you can do ssh into ubuntu1 and ubuntu2 containers without typing password
+```
+ssh -p 2001 root@localhost
+ssh -p 2002 root@localhost
+```
+When it prompts a question, type yes
+```
+Are you sure, you want to continue connecting (yes/no): 
+```
