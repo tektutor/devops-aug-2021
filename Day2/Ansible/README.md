@@ -200,7 +200,7 @@ You need to replace 'jegan' with 'devops' in the inventory file
 ```
 ansible -i inventory ubuntu1 -m ping > out.yml 2>&1
 ```
-1. Ansible picks the connection details of ubuntu1 ansible node and makes a SSH connection to ubuntu1 ansible node.
+1. Ansible picks the connection details of ubuntu1 ansible node from inventory file and makes a SSH connection to ubuntu1 ansible node.
 2. Ansible creates a tmp folder in ACM(Ansible Controller Machine) and another tmp folder in ubuntu1 ansible node.
 3. Ansible copies the ping.py from ACM tmp folder to ubuntu1 tmp folder.
 4. Ansible then gives execute permission to ping.py in the ubuntu1 ansible node.
