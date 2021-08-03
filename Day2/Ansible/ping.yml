@@ -1,0 +1,13 @@
+- name: First play
+  hosts: ubuntu1
+  gather_facts: no
+  tasks:
+     - name: Invoke ping module in ubuntu1 node
+       ping:
+
+- name: Second play
+  gather_facts: no
+  hosts: ubuntu2
+  tasks:
+     - name: Invoke ping module in ubuntu2 node
+       ping:
