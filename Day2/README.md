@@ -11,7 +11,7 @@
 Orchestration Platform
 	- Docker SWARM - only supports Docker Container Runtime
 	- Google Kubernetes
-		- Supports Docker Runtime by default as of 1.21 Kubernetes version
+		-- Supports Docker Runtime by default as of 1.21 Kubernetes version
 		- Likely to move to Podman Container Runtime starting from 1.22 K8s onwards
 		- Also supports LXC, RKt, Podman Container Runtimes
 		- This orchestration platform is time tested as Google used it several years internally
