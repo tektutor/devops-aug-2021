@@ -1,12 +1,12 @@
 ### Orchestration Platforms
 - can deploy your applications to ensure they are Highly Available(HA)
 - also offers monitoring capabilities
-- automatically detects faults applications and replaces them with another good instance
+- automatically detects faulty applications and replaces them with another good instance
 - on demand, you could scale up/down the number of instances of your application
 - rolling updates
 	- should be able upgrade your appln from one version to the other
  	- should be able to rollback to older version in case of any instability observed in your latest upgrade
-- you can external/internal/cloud services for your applications
+- you can expose external/internal/cloud services for your applications
 
 Orchestration Platform
 	- Docker SWARM - only supports Docker Container Runtime
