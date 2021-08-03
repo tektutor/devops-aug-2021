@@ -79,25 +79,25 @@ su -
 yum install -y git
 ```
 
-### Cloning source code (Do this as Devops_userxx)
+### Cloning source code (Do this as Devops user)
 ```
 git clone https://github.com/tektutor/devops-aug-2021.git
 cd devops-aug-2021/Day2/Ansible
 ```
 
-### Creating ssh key pairs (Do this as Devops_userxx)
+### Creating ssh key pairs (Do this as Devops user)
 ```
 ssh-keygen
 ```
 Accept all defaults by hitting Enter key 3 times.
 
-### Copy the public key and put it in Day2/Ansible/ubuntu-ansible
+### Copy the public key and put it in Day2/Ansible/ubuntu-ansible (Do this as Devops user)
 ```
 cd devops-aug-2021/Day2/Ansible/ubuntu-ansible
 cp ~/.ssh/id_rsa.pub authorized_keys
 ```
 
-### Build the custom ubuntu ansible image
+### Build the custom ubuntu ansible image (Do this as Devops user)
 ```
 docker build -t tektutor/ansible-ubuntu .
 ```
