@@ -185,3 +185,9 @@ applicable law.
 
 root@ubuntu2:~#    
 </pre>
+
+### Running ansible adhoc ping command
+```
+cd devops-aug-2021/Day2/Ansible
+ansible -i inventory all -m ping
+```
