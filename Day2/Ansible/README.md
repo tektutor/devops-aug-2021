@@ -90,3 +90,15 @@ cd devops-aug-2021/Day2/Ansible
 ssh-keygen
 ```
 Accept all defaults by hitting Enter key 3 times.
+
+### Copy the public key and put it in Day2/Ansible/ubuntu-ansible
+```
+cd devops-aug-2021/Day2/Ansible/ubuntu-ansible
+cp ~/.ssh/id_rsa.pub authorized_keys
+```
+
+### Build the custom ubuntu ansible image
+```
+docker build -t tektutor/ansible-ubuntu .
+```
+
