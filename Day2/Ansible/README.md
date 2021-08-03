@@ -102,3 +102,11 @@ cp ~/.ssh/id_rsa.pub authorized_keys
 docker build -t tektutor/ansible-ubuntu .
 ```
 
+### Troubleshooting permission denied issue
+```
+su -
+usermod -aG docker devops
+exit
+sudo su devops
+docker build -t tektutor/ansible-ubuntu .
+```
