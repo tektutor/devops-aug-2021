@@ -208,3 +208,9 @@ ansible -i inventory ubuntu1 -m ping > out.yml 2>&1
 6. Collects the output of ping.py execution.
 7. Deletes the tmp folder in the ubuntu1 ansible node.
 8. Prints a summary of the outcome in the Ansible Controller Machine.
+
+### Executing ansible playbook
+```
+cd devops-aug-2021/Day2/Ansible
+ansible-playbook -i inventory ping.yml
+```
