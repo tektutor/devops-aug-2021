@@ -59,7 +59,7 @@ Ansible
 	- Configure softwares
 	- Manage users/permission/network policies
 	- typically most of the admin related day-today-work
-	- helps in automating configuration management using Declarative Languages
+	- helps in automating configpinguration management using Declarative Languages
 
 ### Installing Ansible
 ```
@@ -188,6 +188,11 @@ root@ubuntu2:~#
 
 ### Running ansible adhoc ping command
 ```
+cd devops-aug-2021
+git stash
+git pull
 cd devops-aug-2021/Day2/Ansible
 ansible -i inventory all -m ping
 ```
+You need to replace 'jegan' with 'devops' in the inventory file 
+
