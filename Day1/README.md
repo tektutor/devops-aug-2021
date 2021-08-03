@@ -333,3 +333,80 @@ USE tektutor;
 SELECT * FROM Training;
 ```
 As you can observe, though mysql1 container was deleted we are able to access the records created in old container from the new mysql1 container.  This is possible as we are using Volume Mounting /tmp/mysql.
+
+### Setting up Load Balancer with nginx
+Let's create 3 nginx containers as shown below to be used as web servers
+```
+docker run -d --name nginx1 --hostname nginx1 nginx:1.20
+docker run -d --name nginx2 --hostname nginx2 nginx:1.20
+docker run -d --name nginx3 --hostname nginx3 nginx:1.20
+```
+
+Let's create a loadbalancer container using nginx image
+```
+docker run -d --name lb --hostname lb nginx:1.20
+```
+
+We need to configure lb container to work like a Load Balancer otherwise by default nginx works as a typical webserver. Let's copy the existing config file from lb to local machine as shown below.
+```
+docker cp lb:/etc/nginx/nginx.conf .
+```
+
+We need to modify the copied nginx.conf file as below
+```
+user  nginx;
+worker_processes  auto;
+
+error_log  /var/log/nginx/error.log notice;
+pid        /var/run/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    upstream backend {
+        server 172.17.0.2;
+        server 172.17.0.3;
+        server 172.17.0.4;
+        server 172.17.0.6;
+        server 172.17.0.7;
+    }
+    
+    server {
+        location / {
+            proxy_pass http://backend;
+        }
+    }
+}
+```
+
+We need to copy the nginx.conf file into the lb container and restart the apply the changes
+```
+docker cp nginx.conf lb:/etc/nginx/nginx.conf
+docker restart lb
+```
+
+See if the lb container is running after the config changes
+```
+docker ps
+```
+
+Let's modify index.html with custom message on nginx1, nginx2 and nginx3 to differentiate the output coming from each server.
+```
+echo "Server 1" > index.hmtl
+docker cp index.html nginx1:/usr/share/nginx/html/index.html
+echo "Server 2" > index.hmtl
+docker cp index.html nginx2:/usr/share/nginx/html/index.html
+echo "Server 3" > index.hmtl
+docker cp index.html nginx3:/usr/share/nginx/html/index.html
+```
+
+### Time to test your load balancer
+```
+curl http://localhost
+curl http://localhost
+curl http://localhost
+```
+Each time you curl, you are expected to see web pages served by nginx1, nginx2 and nginx3 in a round-robin fashion.
