@@ -1,0 +1,17 @@
+- name: This playbook will install nginx in ubuntu to demonstrate handlers and notifiers
+  hosts: ubuntu
+  tasks:
+    - name: Install nginx
+      apt: name=nginx state=latest update_cache=yes
+      notify:
+        - Restart nginx 
+
+  handlers:
+     - name: Restart nginx
+       shell: service nginx start
+
+
+
+
+
+
