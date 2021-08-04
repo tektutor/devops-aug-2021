@@ -74,3 +74,24 @@ git pull
 cd Day3/HandlersAndNotifiers
 ansible-playbook install-nginx-playbook.yml
 ```
+
+### Remove the existing otherwise nginx and apache port conflicts will happen
+```
+docker rm -f $(docker ps -aq)
+```
+
+### Running the playbook that demonstrates using custom ansible role
+```
+cd ~/devops-aug-2021
+git pull
+cd Day3/CustomAnsibleRole
+ansible-playbook install-apache-playbook.yml
+```
+
+### Check if you can access the custom web pages
+```
+curl http://localhost:8001
+curl http://localhost:8002
+curl http://localhost:8003
+curl http://localhost:8004
+```
