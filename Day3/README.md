@@ -25,6 +25,9 @@ ssh -p 2004 root@localhost
 
 ### Check if ansible ping works 
 ```
+cd ~/devops-aug-2021
+git pull
+cd Day3
 ansible all -m ping
 ansible ubuntu -m ping
 ansible centos -m ping
