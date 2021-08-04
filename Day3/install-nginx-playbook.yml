@@ -1,0 +1,21 @@
+- name: This playbook will install nginx, configure web root folder and deploys custom web page
+  hosts: ubuntu 
+  tasks:
+    - name: Install nginx
+      apt: name=nginx state=latest update_cache=yes
+
+    - name: Start the nginx web server
+      shell: service nginx start
+
+    - name: Create the custom web root folder
+      file: path=/var/html state=directory mode=0755
+     
+    - name: Configure nginx to a custom web root folder
+      copy: src=default dest=/etc/nginx/sites-available/default backup=yes
+
+    - name: Restart the nginx web server to apply config changes
+      shell: service nginx restart
+
+    - name: Deploy custom web page
+      copy: src=index.html dest=/var/html/index.html
+
