@@ -47,4 +47,7 @@ ansible-playbook install-nginx-playbook.yml
 ```
 curl http://localhost:8001
 curl http://localhost:8002
+curl http://localhost:8003
+curl http://localhost:8004
+
 ```
