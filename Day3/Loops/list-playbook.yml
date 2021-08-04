@@ -1,0 +1,15 @@
+- name: This playbook will demonstrate use of list variable
+  hosts: localhost
+  become: yes
+  vars:
+    software_tools:
+       - vim
+       - tmux
+       - git
+  tasks:
+    - name: Install Extra Packages for Enterprise Linux (EPEL)
+      yum: name=epel-release state=latest
+
+    - name: Install software tools
+      yum: name="{{item}}" state=latest 
+      with_items: "{{software_tools}}"
