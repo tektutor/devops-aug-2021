@@ -238,3 +238,10 @@ docker run -d --name centos2 --hostname centos2 -p 2004:22 -p 8004:80 tektutor/a
 ssh -p 2003 root@localhost
 ssh -p 2004 root@localhost
 ```
+
+### Check if ansible ping works 
+```
+ansible all -m ping
+ansible ubuntu -m ping
+ansible centos -m ping
+```
