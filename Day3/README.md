@@ -75,6 +75,12 @@ cd Day3/HandlersAndNotifiers
 ansible-playbook install-nginx-playbook.yml
 ```
 
+### Ansible Galaxy
+```
+ansible-galaxy init apache
+```
+The above command will create the directory structure recommended by Ansible role.  However, for our trainig purpose, you could ignore this command as Day3/CustomAnsibleRole already has the apache role.
+
 ### Remove the existing otherwise nginx and apache port conflicts will happen
 ```
 docker rm -f $(docker ps -aq)
