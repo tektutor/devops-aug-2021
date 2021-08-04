@@ -35,6 +35,9 @@ ansible ubuntu -m ping
 ansible centos -m ping
 ```
 
+### In case you wish to manage Windows Ansible Nodes, you may refer this
+https://docs.ansible.com/ansible/latest/user_guide/windows_setup.html#:~:text=Ansible%20can%20generally%20manage%20Windows,or%20newer%20and%20at%20least%20.
+
 ### Running the playbook
 ```
 cd ~/devops-aug-2021
