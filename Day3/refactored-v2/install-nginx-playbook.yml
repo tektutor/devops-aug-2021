@@ -1,0 +1,22 @@
+- name: This playbook will install nginx, configure web root folder and deploys custom web page
+  hosts: all 
+  vars_files:
+      - my-nginx-conf.yml
+  tasks:
+    - name: Retreive IP Address
+      shell: hostname -i
+      register: ip
+
+    - include: install-nginx-ubuntu.yml
+    - include: install-nginx-centos.yml
+
+    - include: start-nginx-ubuntu.yml
+    - include: start-nginx-centos.yml
+
+    - include: configure-nginx-ubuntu.yml
+    - include: configure-nginx-centos.yml
+
+    - include: restart-nginx-ubuntu.yml
+    - include: restart-nginx-centos.yml
+ 
+    - include: common-nginx-tasks.yml

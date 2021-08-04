@@ -1,0 +1,14 @@
+- name: This playbook will install nginx, configure web root folder and deploys custom web page
+  hosts: all 
+  vars_files:
+      - my-nginx-conf.yml
+  tasks:
+    - name: Retreive IP Address
+      shell: hostname -i
+      register: ip
+
+    - include: "install-nginx-{{ansible_distribution|lower}}.yml"
+    - include: "start-nginx-{{ansible_distribution|lower}}.yml"
+    - include: "configure-nginx-{{ansible_distribution|lower}}.yml"
+    - include: "restart-nginx-{{ansible_distribution|lower}}.yml"
+    - include: common-nginx-tasks.yml

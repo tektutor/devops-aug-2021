@@ -1,0 +1,61 @@
+- name: This playbook will install nginx, configure web root folder and deploys custom web page
+  hosts: all 
+  vars_files:
+      - my-nginx-conf.yml
+  tasks:
+    - name: Retreive IP Address
+      shell: hostname -i
+      register: ip
+
+    - debug: var=ip
+
+    - name: Install nginx in Ubuntu
+      when: ( ansible_distribution == "Ubuntu" and ansible_os_family == "Debian" )
+      apt: name=nginx state=latest update_cache=yes
+
+    - name: Install Extra Packages for EnterPrise Linux (EPEL)
+      when: ( ansible_distribution == "CentOS" and ansible_os_family == "RedHat" )
+      yum: name=epel-release state=latest
+
+    - name: Install nginx in CentOS
+      when: ( ansible_distribution == "CentOS" and ansible_os_family == "RedHat" )
+      yum: name=nginx state=latest
+
+    - name: Start the nginx web server in Ubuntu
+      when: ( ansible_distribution == "Ubuntu" and ansible_os_family == "Debian" )
+      shell: service nginx start
+
+    - name: Let's check if we can access nginx web page
+      shell: curl http://localhost
+      register: output
+      ignore_errors: yes
+
+    - debug: var=output
+
+    - name: Start the nginx web server in CentOS 
+      when: ( output.rc != 0 and ansible_distribution == "CentOS" )
+      shell: nginx
+
+    - name: Create the custom web root folder in Ubuntu
+      when: ( ansible_distribution == "Ubuntu" and ansible_os_family == "Debian" )
+      file: path=/var/html state=directory mode=0755
+     
+    - name: Configure nginx to a custom web root folder in Ubuntu
+      when: ( ansible_distribution == "Ubuntu" and ansible_os_family == "Debian" )
+      copy: src=default dest=/etc/nginx/sites-available/default backup=yes
+
+    - name: Configure nginx to a custom web root folder in CentOS 
+      when: ( output.rc != 0 and ansible_distribution == "CentOS" and ansible_os_family == "RedHat" )
+      copy: src=nginx.conf dest=/etc/nginx/nginx.conf backup=yes
+
+    - name: Restart the nginx web server to apply config changes in Ubuntu
+      when: ( ansible_distribution == "Ubuntu" and ansible_os_family == "Debian" )
+      shell: service nginx restart
+
+    - name: Restart the nginx web server in CentOS 
+      when: ( output.rc != 0 and ansible_distribution == "CentOS" and ansible_os_family == "RedHat" )
+      shell: nginx -s reload
+
+    - name: Deploy custom web page in Ubuntu
+      when: ( ansible_distribution == "Ubuntu" and ansible_os_family == "Debian" )
+      template: src=index.html.j2 dest=/var/html/index.html

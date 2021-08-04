@@ -1,0 +1,3 @@
+- name: Restart the nginx web server in CentOS 
+  when: ( output.rc != 0 and ansible_distribution == "CentOS" and ansible_os_family == "RedHat" )
+  shell: nginx -s reload

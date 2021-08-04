@@ -1,0 +1,5 @@
+- name: Install Extra Packages for EnterPrise Linux (EPEL)
+  yum: name=epel-release state=latest
+
+- name: Install nginx in CentOS
+  yum: name=nginx state=latest

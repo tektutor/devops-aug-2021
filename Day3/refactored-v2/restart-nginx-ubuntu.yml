@@ -1,0 +1,3 @@
+- name: Restart the nginx web server to apply config changes in Ubuntu
+  when: ( ansible_distribution == "Ubuntu" and ansible_os_family == "Debian" )
+  shell: service nginx restart
