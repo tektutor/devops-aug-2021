@@ -20,7 +20,9 @@ docker run -d --name centos2 --hostname centos2 -p 2004:22 -p 8004:80 tektutor/a
 ### Test if you are able to SSH into the centos1 and centos2 containers without password
 ```
 ssh -p 2003 root@localhost
+exit
 ssh -p 2004 root@localhost
+exit
 ```
 
 ### Check if ansible ping works 
