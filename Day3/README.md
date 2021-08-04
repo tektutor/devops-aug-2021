@@ -42,3 +42,9 @@ git pull
 cd Day3
 ansible-playbook install-nginx-playbook.yml
 ```
+
+### Test if you are able to access web page form the ubunt1 and ubuntu2 containers
+```
+curl http://localhost:8001
+curl http://localhost:8002
+```
