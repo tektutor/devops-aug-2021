@@ -65,3 +65,11 @@ curl http://localhost:8001
 curl http://localhost:8002
 curl http://localhost:8003
 curl http://localhost:8004
+
+### Running the playbook that demonstrates handlers and notifiers
+```
+cd ~/devops-aug-2021
+git pull
+cd Day3/HandlersAndNotifiers
+ansible-playbook install-nginx-playbook.yml
+```
