@@ -49,5 +49,19 @@ curl http://localhost:8001
 curl http://localhost:8002
 curl http://localhost:8003
 curl http://localhost:8004
-
 ```
+
+### Running the final refactored playbook
+```
+cd ~/devops-aug-2021
+git pull
+cd Day3/refactored-v3
+ansible-playbook install-nginx-playbook.yml
+```
+
+### Test if you are able to access web page from the ubunt1,ubuntu2, centos1 and centos2 containers respectively
+```
+curl http://localhost:8001
+curl http://localhost:8002
+curl http://localhost:8003
+curl http://localhost:8004
