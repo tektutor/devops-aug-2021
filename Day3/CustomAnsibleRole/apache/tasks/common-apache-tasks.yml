@@ -1,0 +1,5 @@
+- name: Create the custom document root folder
+  file: path=/var/html state=directory mode=0755
+
+- name: Deploy custom web page into web server
+  template: src=index.html.j2 dest=/var/html/index.html

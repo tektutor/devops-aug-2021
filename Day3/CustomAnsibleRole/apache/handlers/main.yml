@@ -1,0 +1,9 @@
+---
+# handlers file for apache
+- name: Restart apache2 
+  shell: /etc/init.d/apache2 start
+
+- name: Restart httpd 
+  shell: /sbin/httpd -k restart
+
+ 

@@ -1,0 +1,4 @@
+- name: Configure document root folder and grant permission to the custom folder
+  copy: src=httpd.conf dest=/etc/httpd/conf/httpd.conf
+  notify:
+    - Restart httpd
