@@ -32,3 +32,11 @@ ansible all -m ping
 ansible ubuntu -m ping
 ansible centos -m ping
 ```
+
+### Running the playbook
+```
+cd ~/devops-aug-2021
+git pull
+cd Day3
+ansible-playbook install-nginx-playbook.yml
+```
