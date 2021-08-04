@@ -1,0 +1,9 @@
+- hosts: ubuntu1
+  gather_facts: no
+  tasks:
+     - ping:
+
+- gather_facts: no
+  hosts: ubuntu2
+  tasks:
+     - ping:
