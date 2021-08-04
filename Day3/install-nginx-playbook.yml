@@ -11,21 +11,83 @@
 
     - debug: var=ip
 
-    - name: Install nginx
+    - name: Install nginx in Ubuntu
       apt: name=nginx state=latest update_cache=yes
 
-    - name: Start the nginx web server
+    - name: Start the nginx web server in Ubuntu
       shell: service nginx start
 
-    - name: Create the custom web root folder
+    - name: Create the custom web root folder in Ubuntu
       file: path=/var/html state=directory mode=0755
      
-    - name: Configure nginx to a custom web root folder
+    - name: Configure nginx to a custom web root folder in Ubuntu
       copy: src=default dest=/etc/nginx/sites-available/default backup=yes
 
-    - name: Restart the nginx web server to apply config changes
+    - name: Restart the nginx web server to apply config changes in Ubuntu
       shell: service nginx restart
 
-    - name: Deploy custom web page
+    - name: Deploy custom web page in Ubuntu
       template: src=index.html.j2 dest=/var/html/index.html
+
+- name: This play will install nginx, configures web root folder and deploy custom wep page
+  hosts: centos
+  vars:
+    - greeting_msg: Welcome to DevOps!
+    - provisioner_tool: Docker
+    - conf_mgr_tool: Ansible
+  tasks:
+    - name: Retreive IP Address
+      shell: hostname -i
+      register: ip
+      tags:
+        - Install
+
+    - name: Install Extra Packages for EnterPrise Linux (EPEL)
+      yum: name=epel-release state=latest
+      tags:
+        - Install
+
+    - name: Install nginx in CentOS
+      yum: name=nginx state=latest
+      tags:
+        - Install
+
+    - name: Let's check if we can access nginx web page
+      shell: curl http://localhost
+      register: output
+      ignore_errors: yes
+      tags:
+        - Install
+
+    - debug: var=output
+      tags:
+        - Install
+
+    - name: Start the nginx web server in CentOS 
+      when: ( output.rc != 0 )
+      shell: nginx
+      tags:
+        - Install
+
+    - name: Create the custom web root folder in CentOS 
+      file: path=/var/html state=directory mode=0755
+      tags:
+        - Install
+
+    - name: Configure nginx to a custom web root folder in CentOS 
+      copy: src=nginx.conf dest=/etc/nginx/nginx.conf backup=yes
+      tags:
+        - Install
+
+    - name: Restart the nginx web server in CentOS 
+      shell: nginx -s reload
+      tags:
+        - Install
+
+    - name: Deploy custom web page in CentOS 
+      template: src=index.html.j2 dest=/var/html/index.html
+      tags:
+        - Install
+
+
 
