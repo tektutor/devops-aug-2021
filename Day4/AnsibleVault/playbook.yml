@@ -1,0 +1,7 @@
+- name: Demonstrates using ansible vault protected sensitive data from Ansible playbook
+  hosts: localhost
+  vars_files:
+     - credentials.yml
+  tasks:
+    - name: Print credential details
+      debug: msg="Username={{credentials["user"]}}; Password="{{credentials["password"]}}""

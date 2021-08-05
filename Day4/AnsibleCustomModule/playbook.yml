@@ -1,0 +1,25 @@
+- name: This playbook demonstrates invoking our custom ansible module
+  hosts: all 
+  tasks:
+     - name: Invoke custom module
+       hello:
+       register: output
+
+     - debug: var=output
+
+     - name: Retrieve IP Address
+       get_ip:
+       register: output
+
+     - debug: var=output
+
+- name: This play will run on localhost
+  hosts: localhost
+  tasks:
+     - name: Invoke python script from shell
+       shell: python3 ./helloworld.py
+       register: output
+
+     - debug: var=output 
+
+
