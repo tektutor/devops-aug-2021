@@ -1,6 +1,13 @@
 - name: This playbook will build the custom docker image which we will later use as a java application build machine
   hosts: localhost
   tasks:
+    - name: Remove any existing containers
+      shell: docker rm -f $(docker ps -aq)
+
+    - name: Remove existing image
+      shell: docker rmi tektutor/devops-jenkins-slave:latest
+      ignore_errors: yes
+
     - name: Build alpine base docker custom image
       docker_image:
          docker_host: tcp://localhost:4243
