@@ -79,7 +79,7 @@ ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
 ```
 To
 ```
-ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock - H tcp://0.0.0.0:4243
+ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock -H tcp://0.0.0.0:4243
 ```
 
 We need to restart the docker service to apply the config changes
