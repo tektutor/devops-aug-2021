@@ -1,10 +1,6 @@
 - name: This playbook will build the custom docker image which we will later use as a java application build machine
   hosts: localhost
   tasks:
-    - name: Remove any existing containers
-      shell: docker rm -f $(docker ps -aq)
-      ignore_errors: yes
-
     - name: Remove existing image
       shell: docker rmi tektutor/devops-jenkins-slave:latest
       ignore_errors: yes
