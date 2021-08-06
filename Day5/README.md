@@ -134,3 +134,28 @@ Aug 06 14:41:21 tektutor dockerd[27647]: time="2021-08-06T14:41:21.057823259+05:
 Aug 06 14:41:21 tektutor dockerd[27647]: time="2021-08-06T14:41:21.065545519+05:30" level=info msg="API listen on [::]:4243"
 </pre>
 
+### Ansible docker_image module depends on Docker Python SDK, hence we need to install it explicitly
+```
+sudo pip3 install docker-py
+```
+The expected output is
+<pre>
+[jegan@tektutor Ansible]$ sudo pip3 install docker-py
+WARNING: Running pip install with root privileges is generally not a good idea. Try `pip3 install --user` instead.
+Collecting docker-py
+  Downloading https://files.pythonhosted.org/packages/23/c7/1fd6d4d620809fe2f323869d719e2dd0086c939b67021303a9ec40f5a05b/docker_py-1.10.6-py2.py3-none-any.whl (50kB)
+    100% |████████████████████████████████| 51kB 978kB/s 
+Collecting websocket-client>=0.32.0 (from docker-py)
+  Downloading https://files.pythonhosted.org/packages/da/0a/a273518f24e76bf6fce78d20352e78fc231fb61e6ad057c1db7f71653dea/websocket_client-1.1.1-py2.py3-none-any.whl (68kB)
+    100% |████████████████████████████████| 71kB 2.0MB/s 
+Collecting docker-pycreds>=0.2.1 (from docker-py)
+  Downloading https://files.pythonhosted.org/packages/f5/e8/f6bd1eee09314e7e6dee49cbe2c5e22314ccdb38db16c9fc72d2fa80d054/docker_pycreds-0.4.0-py2.py3-none-any.whl
+Requirement already satisfied: requests!=2.11.0,>=2.5.2 in /usr/lib/python3.6/site-packages (from docker-py)
+Requirement already satisfied: six>=1.4.0 in /usr/lib/python3.6/site-packages (from docker-py)
+Requirement already satisfied: chardet<3.1.0,>=3.0.2 in /usr/lib/python3.6/site-packages (from requests!=2.11.0,>=2.5.2->docker-py)
+Requirement already satisfied: idna<2.8,>=2.5 in /usr/lib/python3.6/site-packages (from requests!=2.11.0,>=2.5.2->docker-py)
+Requirement already satisfied: urllib3<1.25,>=1.21.1 in /usr/lib/python3.6/site-packages (from requests!=2.11.0,>=2.5.2->docker-py)
+Installing collected packages: websocket-client, docker-pycreds, docker-py
+Successfully installed docker-py-1.10.6 docker-pycreds-0.4.0 websocket-client-1.1.1
+[jegan@tektutor Ansible]$ 
+</pre>
