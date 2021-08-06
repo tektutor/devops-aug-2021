@@ -3,6 +3,7 @@
   tasks:
     - name: Remove any existing containers
       shell: docker rm -f $(docker ps -aq)
+      ignore_errors: yes
 
     - name: Remove existing image
       shell: docker rmi tektutor/devops-jenkins-slave:latest
