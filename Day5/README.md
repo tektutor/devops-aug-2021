@@ -28,3 +28,10 @@ cd ~/Downloads
 java -jar ./jenkins.war
 ```
 You won't able to use the terminal once jenkins is launched as it will block the terminal.  Avoid pressing Ctrl + C, in case you need to copy, you may use the track pad or mouse. For all other purpose, you may use a different terminal tab.
+
+### Accessing Jenkins Page from your lab machine Web browser(Chrome)
+```
+http://localhost:8080
+```
+You need to copy the initial admin password from the Jenkins terminal, make sure you "are not" using Ctrl + C, as it will terminate Jenkins.
+
