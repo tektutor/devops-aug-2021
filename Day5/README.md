@@ -2,6 +2,16 @@
 ```
 sudo yum install java-1.8.0-openjdk-devel
 ```
+### Install Apache Maven 
+```
+cd ~/Downloads
+wget https://mirrors.estointernet.in/apache/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz
+tar xvfz apache-maven-3.8.1-bin.tar.gz
+```
+
+### Adding JDK and Maven in environments settings
+```
+```
 
 ### Verify if JDK 1.8 is installed properly
 ```
